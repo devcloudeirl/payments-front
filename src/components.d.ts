@@ -10,7 +10,13 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Counter: typeof import('./components/counter/counter.vue')['default']
+    DefaultContent: typeof import('./components/layouts/defaultLayout/components/defaultContent.vue')['default']
+    DefaultFooter: typeof import('./components/layouts/defaultLayout/components/defaultFooter.vue')['default']
+    DefaultLayout: typeof import('./components/layouts/defaultLayout/index.vue')['default']
+    DefaultNavbar: typeof import('./components/layouts/defaultLayout/components/defaultNavbar.vue')['default']
+    DefaultSidebar: typeof import('./components/layouts/defaultLayout/components/defaultSidebar.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
-    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
   }
 }
