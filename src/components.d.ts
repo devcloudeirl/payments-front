@@ -16,6 +16,8 @@ declare module '@vue/runtime-core' {
     DefaultNavbar: typeof import('./components/layouts/defaultLayout/components/defaultNavbar.vue')['default']
     DefaultSidebar: typeof import('./components/layouts/defaultLayout/components/defaultSidebar.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
+    Login: typeof import('./components/auth/components/login/index.vue')['default']
+    LoginForm: typeof import('./components/auth/components/login/loginForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
