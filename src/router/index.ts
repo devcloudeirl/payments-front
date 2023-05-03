@@ -21,7 +21,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     const APPNAME = import.meta.env.VITE_APP_NAME
-    const {auth } = to.meta
+    const {auth} = to.meta
     const isAuth = localStorage.getItem(`${APPNAME}_token`) !== null
     if (auth && !isAuth) {
         next(routesConfig.Login)

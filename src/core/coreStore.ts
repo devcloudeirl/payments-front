@@ -3,10 +3,10 @@ import type  {IRoutes,ICoreState} from './models/ICore'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-const basePath = isProduction ?  import.meta.env.VITE_APP_API_URL_PROD : import.meta.env.VITE_APP_API_URL_LOCAL
+const basePath = isProduction ?  import.meta.env.VITE_APP_API_PROD : import.meta.env.VITE_APP_API_URL
 
 const state = reactive<ICoreState>({
-    initialDataRoute: `${basePath}/core/paths`,
+    initialDataRoute: `${basePath}endpoints/`,
     routes: null,
     appName: import.meta.env.VITE_APP_NAME
 })

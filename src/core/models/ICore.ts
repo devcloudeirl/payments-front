@@ -3,6 +3,11 @@ export interface ICoreState{
     routes: IRoutes | null
     appName: string
 }
-export interface IRoutes{
+export interface ICoreRoutes{
     login: string
+    register: string
+
+}
+export interface IRoutes{
+   core: ICoreRoutes
 }
