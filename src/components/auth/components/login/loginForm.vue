@@ -23,21 +23,21 @@
         </div>
 
         <!-- right side -->
-        <div class="p-4">
+        <div class="space-y-8">
           <h1 class="font-bold text-[40px] text-center text-brand-9">
             Iniciar sesión
           </h1>
 
-          <p class="text-slate-400 text-center pb-8">
+          <p class="text-slate-400 text-center">
             Sorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
 
-          <div class="lg:grid place-items-center">
+          <div class="space-y-6 lg:grid place-items-center">
             <!-- user input -->
             <el-input
               v-model="inputUsername"
               type="email"
-              class="pb-5"
+              class=""
               placeholder="Usuario"
               size="large"
               :prefix-icon="UserFilled"
@@ -46,7 +46,7 @@
             <el-input
               v-model="inputPassword"
               type="password"
-              class="pb-8"
+              class=""
               placeholder="Contraseña"
               size="large"
               :prefix-icon="Lock"
@@ -64,12 +64,12 @@
             >Iniciar sesión
           </el-button>
 
-          <p class="text-slate-400 text-center pt-2">
+          <p class="text-slate-400 text-center">
             ¿Olvidaste tu contraseña?
             <a href="#" class="text-brand-9 hover:underline">Click aquí</a>
           </p>
 
-          <p class="text-brand-9 text-center pt-4 font-bold hover:underline">
+          <p class="text-brand-9 text-center font-bold hover:underline">
             <a href="#">Regístrate ahora</a>
           </p>
         </div>
@@ -85,5 +85,9 @@
 
   .el-input__wrapper {
     @apply rounded-3xl !important;
+  }
+
+  button span {
+    @apply text-base !important;
   }
 </style>
