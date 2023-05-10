@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import { ref } from "vue";
   import { UserFilled, Lock } from "@element-plus/icons-vue";
   const inputUsername = ref("");
   const inputPassword = ref("");
