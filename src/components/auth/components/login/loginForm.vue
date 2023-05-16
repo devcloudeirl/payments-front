@@ -55,7 +55,7 @@
             status-icon
             :rules="loginRules"
             ref="form"
-            class="space-y-6 lg:grid place-items-center"
+            class="space-y-6 lg:grid"
           >
             <!-- user input -->
             <el-form-item prop="username">
