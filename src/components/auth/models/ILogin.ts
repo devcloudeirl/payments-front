@@ -17,5 +17,4 @@ export interface IPerson {
 export interface IAuthStore {
     username: string | null
     access: string | null
-    person: IPerson | null
 }

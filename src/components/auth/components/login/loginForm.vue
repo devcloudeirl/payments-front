@@ -1,9 +1,28 @@
 <script setup lang="ts">
   import { UserFilled, Lock } from "@element-plus/icons-vue";
-  const inputUsername = ref("");
-  const inputPassword = ref("");
+  import { useRouter } from "vue-router";
+  import { ILogin } from "../../models/ILogin";
+  import authLogin from "../../actions/authLogin";
+  import routesConfig from "../../../../router/routesConfig";
+  import loginRules from "../../rules/loginRules";
 
   const brand_9 = "#3E63DD";
+
+  const router = useRouter();
+  const form = ref();
+  const loginModel = reactive<ILogin>({} as ILogin);
+
+  const setLogin = async (): Promise<void> => {
+    form.value.validate(async (valid: boolean) => {
+      if (!valid) {
+        ElMessage.error("Rellene los campos correctamente.");
+        return;
+      }
+
+      const status = await authLogin(loginModel);
+      if (status) router.push(routesConfig.Home);
+    });
+  };
 </script>
 
 <template>
@@ -31,37 +50,49 @@
             Sorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
 
-          <div class="space-y-6 lg:grid place-items-center">
+          <el-form
+            :model="loginModel"
+            status-icon
+            :rules="loginRules"
+            ref="form"
+            class="space-y-6 lg:grid place-items-center"
+          >
             <!-- user input -->
-            <el-input
-              v-model="inputUsername"
-              type="email"
-              class=""
-              placeholder="Usuario"
-              size="large"
-              :prefix-icon="UserFilled"
-            />
+            <el-form-item prop="username">
+              <el-input
+                v-model="loginModel.username"
+                type="text"
+                placeholder="Usuario"
+                size="large"
+                :prefix-icon="UserFilled"
+              />
+            </el-form-item>
             <!-- password input -->
-            <el-input
-              v-model="inputPassword"
-              type="password"
-              class=""
-              placeholder="Contraseña"
-              size="large"
-              :prefix-icon="Lock"
-              show-password
-            />
-          </div>
 
-          <!-- Login Button -->
-          <el-button
-            type="primary"
-            class="w-full"
-            round
-            size="large"
-            :color="brand_9"
-            >Iniciar sesión
-          </el-button>
+            <el-form-item prop="password">
+              <el-input
+                v-model="loginModel.password"
+                type="password"
+                placeholder="Contraseña"
+                size="large"
+                :prefix-icon="Lock"
+                show-password
+              />
+            </el-form-item>
+
+            <!-- Login Button -->
+            <el-form-item>
+              <el-button
+                type="primary"
+                class="w-full"
+                round
+                size="large"
+                :color="brand_9"
+                @click="setLogin"
+                >Iniciar sesión
+              </el-button>
+            </el-form-item>
+          </el-form>
 
           <p class="text-slate-400 text-center">
             ¿Olvidaste tu contraseña?
