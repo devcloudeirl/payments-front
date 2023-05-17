@@ -16,6 +16,8 @@ declare module '@vue/runtime-core' {
     DefaultSidebar: typeof import('./components/layouts/defaultLayout/components/defaultSidebar.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
+    ElForm: typeof import('element-plus/es')['ElForm']
+    ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElInput: typeof import('element-plus/es')['ElInput']
     Home: typeof import('./components/home/home.vue')['default']
     Login: typeof import('./components/auth/components/login/index.vue')['default']
