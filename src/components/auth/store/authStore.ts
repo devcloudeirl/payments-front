@@ -1,5 +1,5 @@
 import { computed, reactive } from 'vue'
-import type { IPerson } from '../models/ILogin'
+import type { IPerson } from '../models/IAuth'
 
 const state = reactive({
  username: '',

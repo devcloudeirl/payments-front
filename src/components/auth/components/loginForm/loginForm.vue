@@ -1,7 +1,7 @@
 <script setup lang="ts">
  import { UserFilled, Lock } from '@element-plus/icons-vue'
  import authLogin from '../../actions/authLogin'
- import { ILogin } from '../../models/ILogin'
+ import { ILogin } from '../../models/IAuth'
  import loginRules from './loginRules'
  import { ElForm, ElMessage } from 'element-plus'
  import routesConfig from '../../../../router/routesConfig'
