@@ -21,6 +21,24 @@ const routers = {
       layout: emptyLayout,
     },
   },
+  Register: {
+    path: "/register",
+    name: "Register",
+    component: () => import("../pages/RegisterPage.vue"),
+    meta: {
+      title: "Register",
+      layout: emptyLayout,
+    },
+  },
+  RegisterPerson: {
+    path: "/register-person",
+    name: "RegisterPerson",
+    component: () => import("../pages/RegisterPersonPage.vue"),
+    meta: {
+      title: "RegisterPerson",
+      layout: emptyLayout,
+    },
+  },
 };
 
 export default routers;

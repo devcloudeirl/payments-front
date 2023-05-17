@@ -69,7 +69,7 @@
           </p>
 
           <p class="text-brand-9 text-center font-bold hover:underline">
-            <a href="#">Regístrate ahora</a>
+              <router-link to="/register">Crear una cuenta</router-link>
           </p>
         </div>
       </div>
