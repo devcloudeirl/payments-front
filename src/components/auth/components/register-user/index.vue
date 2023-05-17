@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ArrowLeft, UserFilled, Lock } from "@element-plus/icons-vue";
+import routesConfig from "../../../../router/routesConfig";
 const inputUsername = ref("");
 const inputPassword = ref("");
 const brand_9 = "#3E63DD";
@@ -8,10 +9,10 @@ const brand_9 = "#3E63DD";
   <div class="flex h-screen justify-center">
     <el-card class="box-card card-header m-auto">
       <div class="flex justify-start items-start pl-8 py-0">
-        <router-link to="/">
+        <router-link :to="routesConfig.Login">
           <el-icon :size="25">
             <span
-              class="flex justify-center items-center text-brand-9 space-x-2"
+              class="flex justify-center items-center text-brand-9 font-semibold space-x-2"
             >
               <ArrowLeft /><span class="text-xl">Atras</span>
             </span>
