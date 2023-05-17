@@ -11,7 +11,12 @@ const authRegister = async (model: IRegister): Promise<boolean> => {
     ElMessage.success("Usuario registrado correctamente");
     return true;
   } catch (error: any) {
-    ElMessage.error(error.message);
+    if (error.response && error.response.status === 400) {
+      // 409: Conflicto - El usuario ya está registrado con ese correo electrónico
+      ElMessage.error("El usuario ya está registrado con ese correo electrónico");
+    } else {
+      ElMessage.error(error.message);
+    }
     return false;
   }
 };
