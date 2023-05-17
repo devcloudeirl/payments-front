@@ -1,9 +1,41 @@
 <script setup lang="ts">
-import { ArrowLeft, UserFilled, Lock } from "@element-plus/icons-vue";
+import { ArrowLeft, Message, Lock } from "@element-plus/icons-vue";
 import routesConfig from "../../../../router/routesConfig";
-const inputUsername = ref("");
-const inputPassword = ref("");
-const brand_9 = "#3E63DD";
+import { useRouter } from "vue-router";
+import authRegisterUser from "../../actions/authRegisterUser";
+import { ElMessage } from "element-plus/lib/components/index.js";
+import type { IRegister } from "../../models/ILogin";
+import registerRules from "../../rules/registerRules";
+const router = useRouter();
+const form = ref();
+const registerModel = reactive<IRegister>({} as IRegister);
+const setRegister = async (): Promise<void> => {
+  form.value.validate(async (valid: boolean) => {
+    if (!valid) {
+      ElMessage.error("Por favor, rellene los campos correctamente");
+      return;
+    }
+    const status = await authRegisterUser(registerModel);
+    if (status) router.push(routesConfig.RegisterPerson);
+  });
+};
+const validateConfirmPassword = (rule: any, value: string, callback: any) => {
+  if (value === "") {
+    callback(new Error("Por favor, confirme su contraseña"));
+  } else if (value !== registerModel.password) {
+    callback(new Error("Las contraseñas no coinciden"));
+  } else {
+    callback();
+  }
+};
+registerRules.confirm_password = [
+  {
+    required: true,
+    message: "Por favor, confirme su contraseña",
+    trigger: "blur",
+  },
+  { validator: validateConfirmPassword, trigger: "blur" },
+];
 </script>
 <template>
   <div class="flex h-screen justify-center">
@@ -30,27 +62,34 @@ const brand_9 = "#3E63DD";
             Registrarse
           </h1>
           <p class="text-slate-400 text-center">
-            Para empezar con Payments, ¡unete a nosotros! y disfruta de pagar sin esfuerzos.
+            Para empezar con Payments, ¡unete a nosotros! y disfruta de pagar
+            sin esfuerzos.
           </p>
-          <el-form>
-            <div class="lg:grid">
+          <el-form
+            class="my-input"
+            :model="registerModel"
+            :rules="registerRules"
+            ref="form"
+          >
+            <div class="space-y-6">
               <!-- user input -->
-              <el-form-item>
+              <el-form-item prop="username">
                 <el-input
-                  v-model="inputUsername"
+                  autocomplete="off"
+                  v-model="registerModel.username"
                   type="email"
-                  class="pb-2"
-                  placeholder="Usuario"
+                  class="my-input"
+                  placeholder="Correo electrónico"
                   size="large"
-                  :prefix-icon="UserFilled"
+                  :prefix-icon="Message"
                 />
               </el-form-item>
               <!-- password input -->
-              <el-form-item>
+              <el-form-item prop="password">
                 <el-input
-                  v-model="inputPassword"
+                  v-model="registerModel.password"
                   type="password"
-                  class="pb-2"
+                  class="my-input"
                   placeholder="Contraseña"
                   size="large"
                   :prefix-icon="Lock"
@@ -58,33 +97,37 @@ const brand_9 = "#3E63DD";
                 />
               </el-form-item>
               <!-- password input -->
-              <el-form-item>
+              <el-form-item prop="confirm_password">
                 <el-input
-                  v-model="inputPassword"
+                  v-model="registerModel.confirm_password"
                   type="password"
-                  class=""
-                  placeholder="Contraseña"
+                  class="my-input"
+                  placeholder="Confirmar contraseña"
                   size="large"
                   :prefix-icon="Lock"
                   show-password
                 />
               </el-form-item>
-              <el-checkbox
-                label="Terminos y condiciones"
-                size="large"
-                class=""
-              />
             </div>
+            <el-form-item prop="conditions">
+              <el-checkbox
+                v-model="registerModel.conditions"
+                label="Aceptar Terminos y Condiciones"
+                size="large"
+                class="my-checkbox pt-4"
+              />
+            </el-form-item>
+            <!-- Login Button -->
+            <el-button
+              type="primary"
+              class="w-full"
+              round
+              size="large"
+              color="#3E63DD"
+              @click="setRegister"
+              >Registrarse
+            </el-button>
           </el-form>
-          <!-- Login Button -->
-          <el-button
-            type="primary"
-            class="w-full"
-            round
-            size="large"
-            :color="brand_9"
-            >Registrarse
-          </el-button>
         </div>
       </div>
     </el-card>
