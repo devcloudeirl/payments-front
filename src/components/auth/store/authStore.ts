@@ -1,24 +1,30 @@
 import { computed, reactive } from 'vue'
-import type { IAuthStore, IPerson} from '../models/ILogin'
+import type { IPerson } from '../models/ILogin'
 
-const state = reactive<IAuthStore>({
- username: null,
- access: null,
- person: null,
+const state = reactive({
+ username: '',
+ access: '',
+ person: {} as IPerson,
 })
 
 const authStore = {
- username: {
-  get: () => state.username,
-  set: (value: string) => (state.username = value),
+ get username(): string {
+  return state.username
  },
- access: {
-  get: () => state.access,
-  set: (value: string) => (state.access = value),
+ set username(value: string) {
+  state.username = value
  },
- person: {
-  get: () => state.person,
-  set: (value: IPerson) => (state.person = value),
+ get access(): string {
+  return state.access
+ },
+ set access(value: string) {
+  state.access = value
+ },
+ get person(): IPerson {
+  return state.person
+ },
+ set person(value: IPerson) {
+  state.person = value
  },
 }
 

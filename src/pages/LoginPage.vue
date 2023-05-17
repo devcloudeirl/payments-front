@@ -1,3 +1,3 @@
 <template>
-  <login />
+ <login-form />
 </template>
