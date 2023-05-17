@@ -12,7 +12,11 @@ import ElMessage from "element-plus/lib/components/message/index.js";
 import authRegisterPerson from "../../actions/authRegisterPerson";
 import router from "../../../../router";
 const form = ref();
+
+import { ElLoading } from "element-plus";
+
 const registerModel = reactive<IPerson>({} as IPerson);
+
 const registerPerson = async (): Promise<void> => {
   form.value.validate(async (valid: boolean) => {
     if (!valid) {
@@ -29,6 +33,14 @@ const registerPerson = async (): Promise<void> => {
     }
     const status = await authRegisterPerson(registerModel);
     if (status) router.push(routesConfig.Login);
+    const loading = ElLoading.service({
+      lock: true,
+      text: "Registrando datos",
+      background: "rgba(0, 0, 0, 0.7)",
+    });
+    setTimeout(() => {
+      loading.close();
+    }, 2000);
   });
 };
 </script>
@@ -122,24 +134,23 @@ const registerPerson = async (): Promise<void> => {
                 />
               </el-form-item>
               <!-- Login Button -->
-            <div class="py-2">
-              <el-button
-                type="primary"
-                class="w-full"
-                round
-                size="large"
-                color="#3E63DD"
-                @click="registerPerson"
-                >Registrarse
-              </el-button>
-              <p
-                class="text-brand-9 py-6 text-center font-bold hover:underline"
-              >
-                <router-link :to="routesConfig.Login">Omitir</router-link>
-              </p>
+              <div class="py-2">
+                <el-button
+                  type="primary"
+                  class="w-full"
+                  round
+                  size="large"
+                  color="#3E63DD"
+                  @click="registerPerson"
+                  >Registrarse
+                </el-button>
+                <p
+                  class="text-brand-9 py-6 text-center font-bold hover:underline"
+                >
+                  <router-link :to="routesConfig.Login">Omitir</router-link>
+                </p>
+              </div>
             </div>
-            </div>
-            
           </el-form>
         </div>
       </div>
