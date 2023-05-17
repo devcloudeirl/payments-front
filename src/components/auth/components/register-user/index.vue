@@ -5,10 +5,15 @@ import { useRouter } from "vue-router";
 import authRegisterUser from "../../actions/authRegisterUser";
 import { ElMessage } from "element-plus/lib/components/index.js";
 import type { IRegister } from "../../models/ILogin";
+
+import { ElLoading } from "element-plus";
+
 import registerRules from "../../rules/registerRules";
 const router = useRouter();
 const form = ref();
+
 const registerModel = reactive<IRegister>({} as IRegister);
+
 const setRegister = async (): Promise<void> => {
   form.value.validate(async (valid: boolean) => {
     if (!valid) {
@@ -17,8 +22,17 @@ const setRegister = async (): Promise<void> => {
     }
     const status = await authRegisterUser(registerModel);
     if (status) router.push(routesConfig.RegisterPerson);
+    const loading = ElLoading.service({
+      lock: true,
+      text: "Registrando usuario",
+      background: "rgba(0, 0, 0, 0.7)",
+    });
+    setTimeout(() => {
+      loading.close();
+    }, 2000);
   });
 };
+
 const validateConfirmPassword = (rule: any, value: string, callback: any) => {
   if (value === "") {
     callback(new Error("Por favor, confirme su contraseña"));
@@ -28,6 +42,7 @@ const validateConfirmPassword = (rule: any, value: string, callback: any) => {
     callback();
   }
 };
+
 registerRules.confirm_password = [
   {
     required: true,
