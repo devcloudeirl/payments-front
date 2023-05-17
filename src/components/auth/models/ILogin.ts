@@ -3,15 +3,23 @@ export interface ILogin {
     password: string
 }
 
+export interface IRegisterStore {
+    register: IRegister | null
+}
 export interface IPerson {
-    id: number
     document_number: string
+    name: string
     first_last_name: string
     second_last_name: string
-    name: string
-    full_name: string
-    email: string         
     phone: string
+    user: number
+}
+
+export interface IRegister {
+    username: string
+    password: string
+    confirm_password: string
+    conditions: boolean
 }
 
 export interface IAuthStore {

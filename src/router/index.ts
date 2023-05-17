@@ -7,7 +7,12 @@ import {
 import defaultVue from "../layouts/default.vue";
 import routesConfig from "./routesConfig";
 
-let routes = [routesConfig.Home, routesConfig.Login] as RouteRecordRaw[];
+let routes = [
+  routesConfig.Home,
+  routesConfig.Login,
+  routesConfig.Register,
+  routesConfig.RegisterPerson,
+] as RouteRecordRaw[];
 
 routes = routes.map((route: RouteRecordRaw) => {
   if (!route.meta?.layout) {
