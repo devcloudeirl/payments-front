@@ -6,7 +6,7 @@ export interface ICoreState{
 export interface ICoreRoutes{
     login: string
     register: string
-    registerPerson: string
+    register_person: string
 
 }
 export interface IRoutes{
