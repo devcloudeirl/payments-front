@@ -22,7 +22,7 @@ const brand_9 = "#3E63DD";
       <div class="grid h-full place-items-center lg:grid-cols-2 justify-center">
         <!-- left side -->
         <div class="hidden lg:grid">
-          <img src="../../../../assets/images/login.svg" alt="" />
+          <img src="../../../../assets/images/register.svg" alt="" />
         </div>
         <!-- right side -->
         <div class="w-[400px] space-y-8">
