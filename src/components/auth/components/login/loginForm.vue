@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { UserFilled, Lock } from "@element-plus/icons-vue";
+  import routesConfig from "../../../../router/routesConfig";
   const inputUsername = ref("");
   const inputPassword = ref("");
 
@@ -69,7 +70,7 @@
           </p>
 
           <p class="text-brand-9 text-center font-bold hover:underline">
-            <a href="#">Regístrate ahora</a>
+              <router-link :to="routesConfig.Register">Crear una cuenta</router-link>
           </p>
         </div>
       </div>
