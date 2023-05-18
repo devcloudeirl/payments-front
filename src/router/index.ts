@@ -2,8 +2,9 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 
 import defaultVue from '../layouts/default.vue'
 import routesConfig from './routesConfig'
+const { Home, Login, Register } = routesConfig
 
-let routes = [routesConfig.Home, routesConfig.Login, routesConfig.Register] as RouteRecordRaw[]
+let routes = [Home, Login, Register] as RouteRecordRaw[]
 
 routes = routes.map((route: RouteRecordRaw) => {
  if (!route.meta?.layout) {
@@ -19,7 +20,7 @@ const router = createRouter({
  routes,
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _, next) => {
  const APP_NAME = import.meta.env.VITE_APP_NAME
  const { auth } = to.meta
  const isAuth = localStorage.getItem(`${APP_NAME}_token`) !== null

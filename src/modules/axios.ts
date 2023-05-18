@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const isProduction = process.env.NODE_ENV === 'production'
+const isProduction = import.meta.env.NODE_ENV === 'production'
 const url = isProduction ? import.meta.env.VITE_APP_API_URL_PROD : import.meta.env.VITE_APP_API_URL_LOCAL
 
 const useAxios = axios.create({

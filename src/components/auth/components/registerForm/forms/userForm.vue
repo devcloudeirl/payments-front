@@ -17,7 +17,7 @@
   }
  }
 
- const ruleForPasswordRepeat = async (rule: any, value: string, callback: any) => {
+ const ruleForPasswordRepeat = (_: any, value: string, callback: any) => {
   if (value === '') {
    callback(new Error('Por favor, repita la contraseña'))
   } else if (value !== registerModel.value.password) {
