@@ -80,7 +80,7 @@
    </el-button>
 
    <p class="text-center w-full">
-    Ya tengo una cuenta
+    Ya tengo una cuenta,
     <router-link class="hover:underline text-brand-9" :to="routesConfig.Login"> Iniciar sesión</router-link>
    </p>
   </el-form-item>

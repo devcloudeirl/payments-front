@@ -91,7 +91,7 @@
        </el-button>
 
        <p class="text-center w-full">
-        Aun no tengo una cuenta.
+        Aun no tengo una cuenta,
         <router-link class="hover:underline text-brand-9" :to="routesConfig.Register"> Regístrarme</router-link>
        </p>
       </el-form-item>
