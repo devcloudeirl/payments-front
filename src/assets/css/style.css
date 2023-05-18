@@ -1,0 +1,3 @@
+.el-input__wrapper {
+ @apply rounded-3xl max-w-[386px] !important;
+}

@@ -1,13 +1,14 @@
 import useAxios from '../../modules/axios'
 import coreStore from '../coreStore'
-import type { IRoutes } from '../models/ICore'
+import { ElMessage } from 'element-plus'
 
 const getInitialData = async (): Promise<void> => {
  try {
-  const { data } = await useAxios.get(coreStore.initialDataRoute.get())
-  coreStore.routes.set(data as IRoutes)
+  const { data } = await useAxios.get(coreStore.initialDataRoute)
+  coreStore.routes = data
  } catch (error) {
   console.log(error)
+  ElMessage.error('Error al obtener los datos iniciales')
  }
 }
 

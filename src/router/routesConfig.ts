@@ -1,44 +1,35 @@
-import defaultLayout from "../layouts/default.vue";
-import emptyLayout from "../layouts/empty.vue";
+import defaultLayout from '../layouts/default.vue'
+import emptyLayout from '../layouts/empty.vue'
 
 const routers = {
-  Home: {
-    path: "/",
-    name: "Home",
-    component: () => import("../pages/HomePage.vue"),
-    meta: {
-      title: "Home",
-      layout: defaultLayout,
-      auth: true,
-    },
+ Home: {
+  path: '/',
+  name: 'Home',
+  component: () => import('../pages/HomePage.vue'),
+  meta: {
+   title: 'Home',
+   layout: defaultLayout,
+   auth: true,
   },
-  Login: {
-    path: "/login",
-    name: "Login",
-    component: () => import("../pages/LoginPage.vue"),
-    meta: {
-      title: "Login",
-      layout: emptyLayout,
-    },
+ },
+ Login: {
+  path: '/login',
+  name: 'Login',
+  component: () => import('../pages/LoginPage.vue'),
+  meta: {
+   title: 'Login',
+   layout: emptyLayout,
   },
-  Register: {
-    path: "/register",
-    name: "Register",
-    component: () => import("../pages/RegisterPage.vue"),
-    meta: {
-      title: "Register",
-      layout: emptyLayout,
-    },
+ },
+ Register: {
+  path: '/register',
+  name: 'Register',
+  component: () => import('../pages/RegisterPage.vue'),
+  meta: {
+   title: 'Register',
+   layout: emptyLayout,
   },
-  RegisterPerson: {
-    path: "/register-person",
-    name: "RegisterPerson",
-    component: () => import("../pages/RegisterPersonPage.vue"),
-    meta: {
-      title: "RegisterPerson",
-      layout: emptyLayout,
-    },
-  },
-};
+ },
+}
 
-export default routers;
+export default routers

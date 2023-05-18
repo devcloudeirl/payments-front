@@ -22,11 +22,13 @@ declare module '@vue/runtime-core' {
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
     Home: typeof import('./components/home/home.vue')['default']
-    Login: typeof import('./components/auth/components/login/index.vue')['default']
-    LoginForm: typeof import('./components/auth/components/login/loginForm.vue')['default']
-    RegisterPerson: typeof import('./components/auth/components/register-person/index.vue')['default']
-    RegisterUser: typeof import('./components/auth/components/register-user/index.vue')['default']
+    LoginForm: typeof import('./components/auth/components/loginForm/loginForm.vue')['default']
+    PersonForm: typeof import('./components/auth/components/registerForm/forms/personForm.vue')['default']
+    RegisterForm: typeof import('./components/auth/components/registerForm/registerForm.vue')['default']
+    RegisterPerson: typeof import('./components/auth/components/registerForm/registerPerson.vue')['default']
+    RegisterUser: typeof import('./components/auth/components/registerForm/registerUser.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    UserForm: typeof import('./components/auth/components/registerForm/forms/userForm.vue')['default']
   }
 }

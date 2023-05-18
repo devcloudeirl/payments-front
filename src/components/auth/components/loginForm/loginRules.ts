@@ -1,10 +1,16 @@
 const trigger = 'blur'
+import { FormRules } from 'element-plus'
 
 const loginRules = {
  username: [
   {
    required: true,
    message: 'Por favor ingrese su correo electrónico',
+   trigger: trigger,
+  },
+  {
+   type: 'email',
+   message: 'Por favor ingrese un correo electrónico válido',
    trigger: trigger,
   },
  ],
@@ -20,6 +26,6 @@ const loginRules = {
    trigger: trigger,
   },
  ],
-} as Record<string, any>
+} as FormRules
 
 export default loginRules

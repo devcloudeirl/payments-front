@@ -1,7 +1,5 @@
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>
 
 <template>
-    <register-user />
+ <register-form />
 </template>
